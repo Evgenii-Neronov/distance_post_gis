@@ -1,0 +1,20 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+
+namespace Infrastructure;
+
+internal static class DbConfiguration
+{
+    public static DbContextOptions CreateOptions(string dbname, string prefix)
+    {
+        var connectionString = CreateConnectionString(dbname, prefix);
+        var optionsBuilder = new DbContextOptionsBuilder();
+
+        optionsBuilder.UseNpgsql(connectionString);
+        optionsBuilder.ReplaceService<IModelCustomizer, DefaultModelCustomizer>();
+        return optionsBuilder.Options;
+    }
+
+    public static string CreateConnectionString(string host, string dbname, string username = "testuser", string password = "testpass") 
+    => $"Host={host};Database={dbname};Username={username};Password={password}";
+}
