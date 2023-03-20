@@ -1,4 +1,4 @@
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 
 namespace MyApp.Infrastructure;
@@ -15,6 +15,6 @@ public static class DbConfiguration
         return optionsBuilder.Options;
     }
 
-    public static string CreateConnectionString(string host, string dbname, string username = "testuser", string password = "testpass") 
-    => $"Host={host};Database={dbname};Username={username};Password={password}";
+    public static string CreateConnectionString(string host, string dbname, string username = "testuser", string password = "testpass")
+        => $"Host={host};Database={dbname};Username={username};Password={password}";
 }

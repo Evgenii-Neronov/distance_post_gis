@@ -7,7 +7,9 @@ namespace MyApp.Infrastructure;
 
 public class DefaultModelCustomizer : RelationalModelCustomizer
 {
-    public DefaultModelCustomizer(ModelCustomizerDependencies dependencies) : base(dependencies) { }
+    public DefaultModelCustomizer(ModelCustomizerDependencies dependencies) : base(dependencies)
+    {
+    }
 
     public override void Customize(ModelBuilder builder, DbContext context)
     {
@@ -31,11 +33,9 @@ public class DefaultModelCustomizer : RelationalModelCustomizer
             foreach (var property in properties)
             {
                 if (property.ClrType == typeof(DateTime) || property.ClrType == typeof(DateTime?))
-                {
                     entityTypeBuilder.Property(property.Name)
                         .HasColumnType("timestamp without time zone")
                         .HasConversion(typeof(DateTimeUnspecifiedKindConversion));
-                }
 
                 var columnName = property.Name.PascalToSnakeCase();
                 entityTypeBuilder.Property(property.Name).HasColumnName(columnName);

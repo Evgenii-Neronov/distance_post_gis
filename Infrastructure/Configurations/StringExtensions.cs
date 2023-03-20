@@ -19,9 +19,9 @@ public static class StringExtensions
     private static string transformWithDotNotation(string value, Func<string, string> transformer)
     {
         if (string.IsNullOrEmpty(value)) return value;
-        
-        IEnumerable<string> substrings = value.Split(".").Select(transformer);
-        return String.Join(".", substrings);
+
+        var substrings = value.Split(".").Select(transformer);
+        return string.Join(".", substrings);
     }
 
     private static string pascalToKebabCase(string value)
