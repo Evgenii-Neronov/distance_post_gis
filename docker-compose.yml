@@ -1,0 +1,50 @@
+version: "3.3"
+
+services:
+
+  postgres:
+    container_name: project.infrastructure.postgres.local
+    hostname: postgres
+    networks:
+      - project-network
+    restart: unless-stopped
+    image: postgis/postgis
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: testuser
+      POSTGRES_PASSWORD: testpass
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    command:
+      - "postgres"
+      - "-c"
+      - "wal_level=logical"
+
+  dbgate:
+    container_name: project.infrastructure.dbgate.local
+    hostname: dbgate
+    networks:
+      - project-network
+    restart: unless-stopped
+    image: dbgate/dbgate:5.1.4
+    ports:
+      - 8103:3000
+    environment:
+      CONNECTIONS: con1
+      LABEL_con1: localhost
+      SERVER_con1: postgres
+      USER_con1: testuser
+      PASSWORD_con1: testpass
+      PORT_con1: 5432
+      ENGINE_con1: postgres@dbgate-plugin-postgres
+
+networks:
+  project-network:
+    name: project.network.local
+    driver: bridge
+
+volumes:
+  postgres-data:
+    name: project.infrastructure.postgres-data.local
