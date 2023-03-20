@@ -2,7 +2,7 @@ using Domain;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Infrastructure;
+namespace MyApp.Infrastructure;
 
 public class FacilityConfiguration : IEntityTypeConfiguration<Facility>
 {

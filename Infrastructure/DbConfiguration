@@ -1,13 +1,13 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 
-namespace Infrastructure;
+namespace MyApp.Infrastructure;
 
-internal static class DbConfiguration
+public static class DbConfiguration
 {
-    public static DbContextOptions CreateOptions(string dbname, string prefix)
+    public static DbContextOptions CreateOptions(string host, string dbname)
     {
-        var connectionString = CreateConnectionString(dbname, prefix);
+        var connectionString = CreateConnectionString(dbname, host);
         var optionsBuilder = new DbContextOptionsBuilder();
 
         optionsBuilder.UseNpgsql(connectionString);
