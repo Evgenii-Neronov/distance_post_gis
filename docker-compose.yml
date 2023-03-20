@@ -37,7 +37,7 @@ services:
       SERVER_con1: postgres
       USER_con1: testuser
       PASSWORD_con1: testpass
-      PORT_con1: 15432
+      PORT_con1: 5432
       ENGINE_con1: postgres@dbgate-plugin-postgres
 
 networks:

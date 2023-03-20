@@ -6,7 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddScoped(serviceProvider =>
 {
     var contextType = typeof(MyDbContext);
-    var context = Activator.CreateInstance(contextType, DbConfiguration.CreateOptions("locahost", "my_postgis"));
+    var context = Activator.CreateInstance(contextType, DbConfiguration.CreateOptions("127.0.0.1", "my_postgis"));
     return (MyDbContext)context;
 });
 
