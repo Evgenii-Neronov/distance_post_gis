@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyApp.Infrastructure;
+using NetTopologySuite.Geometries;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
@@ -20,6 +21,7 @@ namespace distance_post_gis.Migrations
                 .HasAnnotation("ProductVersion", "7.0.3")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
+            NpgsqlModelBuilderExtensions.HasPostgresExtension(modelBuilder, "postgis");
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
             modelBuilder.Entity("Domain.Facility", b =>
@@ -32,6 +34,10 @@ namespace distance_post_gis.Migrations
                     b.Property<double>("Latitude")
                         .HasColumnType("double precision")
                         .HasColumnName("latitude");
+
+                    b.Property<Point>("Location")
+                        .HasColumnType("geography (point)")
+                        .HasColumnName("location");
 
                     b.Property<double>("Longitude")
                         .HasColumnType("double precision")
@@ -56,6 +62,10 @@ namespace distance_post_gis.Migrations
                     b.Property<double>("Latitude")
                         .HasColumnType("double precision")
                         .HasColumnName("latitude");
+
+                    b.Property<Point>("Location")
+                        .HasColumnType("geography (point)")
+                        .HasColumnName("location");
 
                     b.Property<double>("Longitude")
                         .HasColumnType("double precision")

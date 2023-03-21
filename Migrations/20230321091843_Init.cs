@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
+using NetTopologySuite.Geometries;
 
 #nullable disable
 
@@ -11,6 +12,9 @@ namespace distance_post_gis.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.AlterDatabase()
+                .Annotation("Npgsql:PostgresExtension:postgis", ",,");
+
             migrationBuilder.CreateTable(
                 name: "facility",
                 columns: table => new
@@ -18,7 +22,8 @@ namespace distance_post_gis.Migrations
                     id = table.Column<Guid>(type: "uuid", nullable: false),
                     latitude = table.Column<double>(type: "double precision", nullable: false),
                     longitude = table.Column<double>(type: "double precision", nullable: false),
-                    name = table.Column<string>(type: "text", nullable: true)
+                    name = table.Column<string>(type: "text", nullable: true),
+                    location = table.Column<Point>(type: "geography (point)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -32,7 +37,8 @@ namespace distance_post_gis.Migrations
                     id = table.Column<Guid>(type: "uuid", nullable: false),
                     latitude = table.Column<double>(type: "double precision", nullable: false),
                     longitude = table.Column<double>(type: "double precision", nullable: false),
-                    name = table.Column<string>(type: "text", nullable: true)
+                    name = table.Column<string>(type: "text", nullable: true),
+                    location = table.Column<Point>(type: "geography (point)", nullable: true)
                 },
                 constraints: table =>
                 {

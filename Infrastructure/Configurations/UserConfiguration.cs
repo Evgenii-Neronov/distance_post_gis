@@ -12,5 +12,6 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
         builder.Property(x => x.Name);
         builder.Property(x => x.Latitude);
         builder.Property(x => x.Longitude);
+        builder.Property(b => b.Location).HasColumnType("geography (point)");
     }
 }
