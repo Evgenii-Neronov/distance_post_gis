@@ -10,8 +10,9 @@ public static class DbConfiguration
         var connectionString = CreateConnectionString(host, dbname);
         var optionsBuilder = new DbContextOptionsBuilder();
 
-        optionsBuilder.UseNpgsql(connectionString);
+        optionsBuilder.UseNpgsql(connectionString, x => x.UseNetTopologySuite());
         optionsBuilder.ReplaceService<IModelCustomizer, DefaultModelCustomizer>();
+        
         return optionsBuilder.Options;
     }
 
