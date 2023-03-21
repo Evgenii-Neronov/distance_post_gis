@@ -10,12 +10,26 @@ builder.Services.AddScoped(serviceProvider =>
     return (MyDbContext)context;
 });
 
+builder.Services.AddSwaggerGen();
+
+builder.Services.AddControllers();
+
 var app = builder.Build();
 
-app.MapGet("/", () => "Hello World!");
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=test}");
+
+
+app.UseSwagger();
+app.UseSwaggerUI();
+
+//app.MapGet("/", () => "Hello World!");
 
 using var scope = app.Services.CreateScope();
 var context = scope.ServiceProvider.GetRequiredService<MyDbContext>();
 context.Database.Migrate();
+
+
 
 app.Run();
