@@ -1,5 +1,6 @@
 ﻿using distance_post_gis.Presentation.Controllers.Models;
 using Domain;
+using Geolocation;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MyApp.Infrastructure;
@@ -103,6 +104,23 @@ public class HomeController : ControllerBase
             .Select(x => new UserFacilityModel()
             {
                 Distance = x.Location.Distance(user.Location.PointOnSurface) ,
+                Facility = new FacilityModel(x),
+            })
+            .ToList();
+
+        return Ok(allFacilities);
+    }
+
+    [HttpGet("get-john-facilities-local")]
+    public async Task<IActionResult> GetJohnFacilitiesLocal()
+    {
+        var user = _userSet.FirstOrDefault(x => x.Id == JohnId);
+        var distanceInMetres = 1000; // 1 km
+
+        var allFacilities = _facilitySet
+            .Select(x => new UserFacilityModel()
+            {
+                Distance = GeoCalculator.GetDistance(x.Latitude, x.Longitude, user.Latitude, user.Longitude, 1, DistanceUnit.Meters),
                 Facility = new FacilityModel(x),
             })
             .ToList();

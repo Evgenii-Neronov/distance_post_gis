@@ -17,6 +17,7 @@
     </PackageReference>
   <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL.NetTopologySuite" Version="7.0.3" />
+  <PackageReference Include="Geolocation.NetStandard" Version="1.1.1" />
   </ItemGroup>
 
 </Project>
