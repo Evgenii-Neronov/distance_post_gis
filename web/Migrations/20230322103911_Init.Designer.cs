@@ -13,7 +13,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace distance_post_gis.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    [Migration("20230321091843_Init")]
+    [Migration("20230322103911_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -27,7 +27,7 @@ namespace distance_post_gis.Migrations
             NpgsqlModelBuilderExtensions.HasPostgresExtension(modelBuilder, "postgis");
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("Domain.Facility", b =>
+            modelBuilder.Entity("Domain.AFacilityA", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -52,7 +52,55 @@ namespace distance_post_gis.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("facility", (string)null);
+                    b.ToTable("a_facility_a", (string)null);
+                });
+
+            modelBuilder.Entity("Domain.BFacilityB", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("id");
+
+                    b.Property<double>("Latitude")
+                        .HasColumnType("double precision")
+                        .HasColumnName("latitude");
+
+                    b.Property<double>("Longitude")
+                        .HasColumnType("double precision")
+                        .HasColumnName("longitude");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("text")
+                        .HasColumnName("name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("b_facility_b", (string)null);
+                });
+
+            modelBuilder.Entity("Domain.CFacilityC", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("id");
+
+                    b.Property<double>("Latitude")
+                        .HasColumnType("double precision")
+                        .HasColumnName("latitude");
+
+                    b.Property<double>("Longitude")
+                        .HasColumnType("double precision")
+                        .HasColumnName("longitude");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("text")
+                        .HasColumnName("name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("c_facility_c", (string)null);
                 });
 
             modelBuilder.Entity("Domain.User", b =>

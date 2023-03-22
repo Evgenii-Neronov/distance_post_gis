@@ -16,7 +16,7 @@ namespace distance_post_gis.Migrations
                 .Annotation("Npgsql:PostgresExtension:postgis", ",,");
 
             migrationBuilder.CreateTable(
-                name: "facility",
+                name: "a_facility_a",
                 columns: table => new
                 {
                     id = table.Column<Guid>(type: "uuid", nullable: false),
@@ -27,7 +27,35 @@ namespace distance_post_gis.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_facility", x => x.id);
+                    table.PrimaryKey("PK_a_facility_a", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "b_facility_b",
+                columns: table => new
+                {
+                    id = table.Column<Guid>(type: "uuid", nullable: false),
+                    latitude = table.Column<double>(type: "double precision", nullable: false),
+                    longitude = table.Column<double>(type: "double precision", nullable: false),
+                    name = table.Column<string>(type: "text", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_b_facility_b", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "c_facility_c",
+                columns: table => new
+                {
+                    id = table.Column<Guid>(type: "uuid", nullable: false),
+                    latitude = table.Column<double>(type: "double precision", nullable: false),
+                    longitude = table.Column<double>(type: "double precision", nullable: false),
+                    name = table.Column<string>(type: "text", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_c_facility_c", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
@@ -50,7 +78,13 @@ namespace distance_post_gis.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "facility");
+                name: "a_facility_a");
+
+            migrationBuilder.DropTable(
+                name: "b_facility_b");
+
+            migrationBuilder.DropTable(
+                name: "c_facility_c");
 
             migrationBuilder.DropTable(
                 name: "user");

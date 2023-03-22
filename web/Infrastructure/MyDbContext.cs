@@ -11,7 +11,10 @@ public class MyDbContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.HasPostgresExtension("postgis");
-        modelBuilder.ApplyConfiguration(new FacilityConfiguration());
+        //modelBuilder.ApplyConfiguration(new FacilityConfiguration());
+        modelBuilder.ApplyConfiguration(new FacilityAConfiguration());
+        modelBuilder.ApplyConfiguration(new FacilityBConfiguration());
+        modelBuilder.ApplyConfiguration(new FacilityCConfiguration());
         modelBuilder.ApplyConfiguration(new UserConfiguration());
     }
 }

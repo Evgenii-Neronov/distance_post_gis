@@ -19,6 +19,6 @@ public static class DbConfiguration
     public static string CreateConnectionString(string host, string dbname, string username = "testuser",
         string password = "testpass")
     {
-        return $"Host={host};Port={15432};Database={dbname};Username={username};Password={password}";
+        return $"Host={host};Port={5432};Database={dbname};Username={username};Password={password}";
     }
 }
