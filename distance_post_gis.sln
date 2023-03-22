@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33103.184
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "test_data_generator", "test_data_generator\test_data_generator.csproj", "{C681834C-88F1-4DB4-B040-F11EC7B2023B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "distance_post_gis", "web\distance_post_gis.csproj", "{E7FB0BDE-6B02-4D8F-9DD4-E6BC22DEFCC2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C681834C-88F1-4DB4-B040-F11EC7B2023B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C681834C-88F1-4DB4-B040-F11EC7B2023B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C681834C-88F1-4DB4-B040-F11EC7B2023B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C681834C-88F1-4DB4-B040-F11EC7B2023B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7FB0BDE-6B02-4D8F-9DD4-E6BC22DEFCC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7FB0BDE-6B02-4D8F-9DD4-E6BC22DEFCC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7FB0BDE-6B02-4D8F-9DD4-E6BC22DEFCC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7FB0BDE-6B02-4D8F-9DD4-E6BC22DEFCC2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4E1CAB5D-B460-4A92-8DF6-8185A0767E66}
+	EndGlobalSection
+EndGlobal
