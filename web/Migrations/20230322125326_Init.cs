@@ -59,6 +59,21 @@ namespace distance_post_gis.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "facility",
+                columns: table => new
+                {
+                    id = table.Column<Guid>(type: "uuid", nullable: false),
+                    latitude = table.Column<double>(type: "double precision", nullable: false),
+                    longitude = table.Column<double>(type: "double precision", nullable: false),
+                    name = table.Column<string>(type: "text", nullable: true),
+                    location = table.Column<Point>(type: "geography (point)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_facility", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "user",
                 columns: table => new
                 {
@@ -85,6 +100,9 @@ namespace distance_post_gis.Migrations
 
             migrationBuilder.DropTable(
                 name: "c_facility_c");
+
+            migrationBuilder.DropTable(
+                name: "facility");
 
             migrationBuilder.DropTable(
                 name: "user");

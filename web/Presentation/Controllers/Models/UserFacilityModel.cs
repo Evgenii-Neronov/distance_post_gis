@@ -16,6 +16,30 @@ public class FacilityModel
         Longitude = facility.Longitude;
         Name = facility.Name;
     }
+
+    public FacilityModel(AFacilityA facility)
+    {
+        Id = facility.Id;
+        Latitude = facility.Latitude;
+        Longitude = facility.Longitude;
+        Name = facility.Name;
+    }
+
+    public FacilityModel(BFacilityB facility)
+    {
+        Id = facility.Id;
+        Latitude = facility.Latitude;
+        Longitude = facility.Longitude;
+        Name = facility.Name;
+    }
+
+    public FacilityModel(CFacilityC facility)
+    {
+        Id = facility.Id;
+        Latitude = facility.Latitude;
+        Longitude = facility.Longitude;
+        Name = facility.Name;
+    }
 }
 
 public class UserModel

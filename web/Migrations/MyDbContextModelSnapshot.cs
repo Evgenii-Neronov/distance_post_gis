@@ -100,6 +100,34 @@ namespace distance_post_gis.Migrations
                     b.ToTable("c_facility_c", (string)null);
                 });
 
+            modelBuilder.Entity("Domain.Facility", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("id");
+
+                    b.Property<double>("Latitude")
+                        .HasColumnType("double precision")
+                        .HasColumnName("latitude");
+
+                    b.Property<Point>("Location")
+                        .HasColumnType("geography (point)")
+                        .HasColumnName("location");
+
+                    b.Property<double>("Longitude")
+                        .HasColumnType("double precision")
+                        .HasColumnName("longitude");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("text")
+                        .HasColumnName("name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("facility", (string)null);
+                });
+
             modelBuilder.Entity("Domain.User", b =>
                 {
                     b.Property<Guid>("Id")

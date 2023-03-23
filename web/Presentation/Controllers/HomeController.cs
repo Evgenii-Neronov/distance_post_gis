@@ -12,9 +12,15 @@ namespace Project.Application.Presentation;
 [Route("home")]
 public class HomeController : ControllerBase
 {
+    private const int DistanceLimit = 1000000;
+
     private readonly MyDbContext _myDbContext;
     private readonly DbSet<Facility> _facilitySet;
     private readonly DbSet<User> _userSet;
+
+    private readonly DbSet<AFacilityA> _facilityASet;
+    private readonly DbSet<BFacilityB> _facilityBSet;
+    private readonly DbSet<CFacilityC> _facilityCSet;
 
     private readonly Guid JohnId = Guid.Parse("ef303c96-50ab-4ab7-a89b-9b995f2b4039");
 
@@ -23,8 +29,11 @@ public class HomeController : ControllerBase
         _myDbContext = myDbContext;
         _userSet = _myDbContext.Set<User>();
         _facilitySet = _myDbContext.Set<Facility>();
-    }
 
+        _facilityASet = _myDbContext.Set<AFacilityA>();
+        _facilityBSet = _myDbContext.Set<BFacilityB>();
+        _facilityCSet = _myDbContext.Set<CFacilityC>();
+    }
     
     [HttpPost("addFacility")]
     public async Task<IActionResult> AddFacility(string name, double lat, double lon)
@@ -127,9 +136,6 @@ public class HomeController : ControllerBase
 
         return Ok(allFacilities);
     }
-    // var distanceInMetres = 1000; // 1 km
-    // var entities = context.MyEntities.Select(x => x.Location.Distance(new Point(1,1)) <= distanceInMetres) .ToArray();
-
 
     [HttpGet("InitTestData")]
     public async Task<IActionResult> Test()

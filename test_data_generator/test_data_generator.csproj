@@ -8,7 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\distance_post_gis.csproj" />
     <ProjectReference Include="..\web\distance_post_gis.csproj" />
   </ItemGroup>
 
